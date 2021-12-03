@@ -7,18 +7,20 @@ import Typography from "@material-ui/core/Typography";
 
 export default function CardDetails({ title, img }) {
   return (
-    <Card className="">
-      <CardMedia className="w-56 h-52" image={img} title="Paella dish" />
-      <CardContent>
-        <Typography
-          className=" text-center"
-          variant="body1"
-          color="inherit"
-          component="p"
-        >
-          {title}
-        </Typography>
-      </CardContent>
-    </Card>
+    <div className=" transform ease-in-out transition  hover:scale-105">
+      <Card>
+        <CardMedia className="w-56 h-52" image={img} title="Paella dish" />
+        <CardContent>
+          <Typography
+            className=" text-center"
+            variant="body1"
+            color="inherit"
+            component="p"
+          >
+            {title}
+          </Typography>
+        </CardContent>
+      </Card>
+    </div>
   );
 }

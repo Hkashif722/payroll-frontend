@@ -15,7 +15,7 @@ const pageRoute = [
   },
   {
     title: "Payment",
-    route: "/pay",
+    route: "/emp-grade",
   },
   {
     title: "Employee",

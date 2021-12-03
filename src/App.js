@@ -1,12 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import Employee from "./components/componentList/Employee";
-import Payment from "./components/componentList/Payment";
 import Drawer from "./components/UseDrawer";
 import Login from "./components/componentList/Login";
 import SignUpLoginIn from "./components/SignUpLoginIn";
 import Home from "./components/componentList/Home";
 import Company from "./components/componentList/Company";
 import Department from "./components/componentList/Department";
+import Grade from "./components/componentList/Grade";
+import EmployeeGrade from "./components/componentList/EmployeeGrade";
 
 function App() {
   return (
@@ -23,8 +24,9 @@ function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/company" element={<Company />} />
                 <Route path="/employee" element={<Employee />} />
-                <Route path="/pay" element={<Payment />} />
+                <Route path="/emp-grade" element={<EmployeeGrade />} />
                 <Route path="/department" element={<Department />} />
+                <Route path="/grade" element={<Grade />} />
               </Routes>
             </div>
           </main>

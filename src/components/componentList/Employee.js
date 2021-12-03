@@ -17,6 +17,7 @@ import Form from "../Form";
 //   );
 // }
 
+//for table
 const columns = [
   {
     field: "id",
@@ -95,6 +96,7 @@ const columns = [
 ];
 //
 
+//for forms
 const formikInputs = [
   {
     value: "emp_id",
@@ -180,6 +182,8 @@ export default function Employee() {
     <div className="">
       <Form
         initialValues={initialValues}
+        formikInputs={formikInputs}
+        heading="Employee Details"
         Query={Add_Employee}
         PQuery={ALL_EMPLOYEE}
       />

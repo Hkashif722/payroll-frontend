@@ -14,55 +14,13 @@ function Label({ label }) {
   );
 }
 
-const formikInputs = [
-  {
-    value: "emp_id",
-    type: "number",
-    lable: "EMP ID:",
-  },
-  {
-    value: "emp_name",
-    type: "text",
-    lable: "EMP NAME:",
-  },
-  {
-    value: "emp_dob",
-    type: "text",
-    lable: "EMP DOB:",
-  },
-  {
-    value: "emp_doj",
-    type: "text",
-    lable: "EMP DOJ:",
-  },
-  {
-    value: "emp_city",
-    type: "text",
-    lable: "EMP CITY:",
-  },
-  {
-    value: "emp_pincode",
-    type: "text",
-    lable: "EMP PIN:",
-  },
-  {
-    value: "emp_mobile_no",
-    type: "number",
-    lable: "EMP MOB:",
-  },
-  {
-    value: "emp_state",
-    type: "text",
-    lable: "EMP STATE:",
-  },
-  {
-    value: "emp_mail_id",
-    type: "email",
-    lable: "EMP EMAILID:",
-  },
-];
-
-export default function Form({ initialValues, Query, PQuery }) {
+export default function Form({
+  initialValues,
+  formikInputs,
+  heading,
+  Query,
+  PQuery,
+}) {
   const [triggerQuery, { data: Data, loading: Loading, error: Error }] =
     useMutation(Query);
   // console.log(data);
@@ -87,7 +45,7 @@ export default function Form({ initialValues, Query, PQuery }) {
   return (
     <div className="">
       <div className="lg:ml-4 max-w-3xl">
-        <h1 className="text-2xl text-gray-500">Employee Details</h1>
+        <h1 className="text-2xl text-gray-500">{heading}</h1>
         <div className="mt-10">
           <Card className="" variant="outlined">
             <CardContent>

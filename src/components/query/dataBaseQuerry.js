@@ -19,11 +19,62 @@ const ALL_EMPLOYEE = gql`
   }
 `;
 
+const GRADE_DETAILS = gql`
+  {
+    grade {
+      grade_id
+      grade_name
+      grade_basic_salary
+      grade_bonus
+    }
+  }
+`;
+
+const EMPLOYEE_GRADE = gql`
+  {
+    employee_Grade {
+      transaction_id
+      emp_id
+      emp_dept_id
+      emp_grade_id
+      emp_from_date
+      emp_to_date
+    }
+  }
+`;
+
 const DEPARTMENT = gql`
   {
     department {
       dept_id
       dept_name
+    }
+  }
+`;
+
+const ADD_EMP_GRADE_DETAILS = gql`
+  mutation AddEmpGradeDetails(
+    $transaction_id: Int
+    $emp_id: Int
+    $emp_dept_id: Int
+    $emp_grade_id: Int
+    $emp_from_date: String
+    $emp_to_date: String
+  ) {
+    addEmpGrade(
+      transaction_id: $emp_id
+      emp_id: $emp_id
+      emp_dept_id: $emp_dept_id
+      emp_grade_id: $emp_grade_id
+      emp_from_date: $emp_from_date
+      emp_to_date: $emp_to_date
+    ) {
+      transaction_id
+      emp_id
+      emp_dept_id
+      emp_grade_id
+      emp_from_date
+      emp_to_date
     }
   }
 `;
@@ -41,6 +92,27 @@ const DELETE_DEPARTMENT = gql`
   mutation DeleteDepartment($dept_id: Int) {
     deleteDepartment(dept_id: $dept_id) {
       dept_id
+    }
+  }
+`;
+
+const ADD_GRADE = gql`
+  mutation AddGrade(
+    $grade_id: Int
+    $grade_name: String
+    $grade_basic_salary: Int
+    $grade_bonus: Int
+  ) {
+    addGrade(
+      grade_id: $grade_id
+      grade_name: $grade_name
+      grade_basic_salary: $grade_basic_salary
+      grade_bonus: $grade_bonus
+    ) {
+      grade_id
+      grade_name
+      grade_basic_salary
+      grade_bonus
     }
   }
 `;
@@ -87,4 +159,8 @@ export {
   DEPARTMENT,
   ADD_DEPARTMENT,
   DELETE_DEPARTMENT,
+  GRADE_DETAILS,
+  ADD_GRADE,
+  EMPLOYEE_GRADE,
+  ADD_EMP_GRADE_DETAILS,
 };

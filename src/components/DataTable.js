@@ -21,7 +21,7 @@ export default function DataTable({ rows, columns, col }) {
           height: col ? 500 : 700,
           alignItems: "center",
           textAlign: "right",
-          width: `${col ? "146%" : "250%"} `,
+          width: `${col ? "145%" : "230%"} `,
           backgroundColor: "blue",
         }}
         className={classes.root}

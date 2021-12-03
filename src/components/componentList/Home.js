@@ -23,9 +23,9 @@ const titles = [
   },
   {
     id: "4",
-    title: "Add New Grade Details",
+    title: "Employee Grade Details",
     img: "https://cdn4.iconfinder.com/data/icons/business-and-finance-line-1/512/finance_business_investment_payment_report-512.png",
-    route: "/gradeDetails",
+    route: "/emp-grade",
   },
   {
     id: "5",
