@@ -27,7 +27,7 @@ export default function Register() {
       };
       axios
         .post("http://localhost:4000/register", userObj)
-        .then((res) => console.log(res.data));
+        .then((res) => res.log(res.data));
     } else {
       alert("Password does not match");
     }

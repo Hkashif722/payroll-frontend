@@ -5,15 +5,95 @@ import CardContent from "@material-ui/core/CardContent";
 import { Button } from "@material-ui/core";
 import { useMutation, useQuery } from "@apollo/client";
 import { Add_Employee, ALL_EMPLOYEE } from "../query/dataBaseQuerry";
-import Table from "../Table";
+import DataTable from "../DataTable";
+import SnackBar from "./SanckBar";
+import Form from "../Form";
 
-function Label({ label }) {
-  return (
-    <div className="ml-2 w-32 mt-1">
-      <label id="emp_name">{label}</label>
-    </div>
-  );
-}
+// function Label({ label }) {
+//   return (
+//     <div className="ml-2 w-32 mt-1">
+//       <label id="emp_name">{label}</label>
+//     </div>
+//   );
+// }
+
+const columns = [
+  {
+    field: "id",
+    sortable: false,
+    editable: false,
+    headerName: "EMPLOYEE ID",
+    headerClassName: "super-app-theme--header",
+    width: 150,
+  },
+  {
+    field: "emp_name",
+    headerName: "EMPLOYEE NAME",
+    sortable: false,
+    editable: false,
+    headerClassName: "super-app-theme--header",
+    textAlign: "center",
+    width: 180,
+  },
+
+  {
+    field: "emp_dob",
+    headerName: "EMPLOYEE DOB",
+    width: 180,
+    headerClassName: "super-app-theme--header",
+    editable: false,
+    sortable: false,
+  },
+  {
+    field: "emp_doj",
+    headerName: "EMPLOYEE DOJ",
+    headerClassName: "super-app-theme--header",
+    width: 170,
+    editable: false,
+    sortable: false,
+  },
+  {
+    field: "emp_pincode",
+    headerName: "EMPLOYEE PINCODE",
+    width: 180,
+    editable: false,
+    headerClassName: "super-app-theme--header",
+    sortable: false,
+  },
+  {
+    field: "emp_city",
+    headerName: "EMPLOYEE CITY",
+    width: 170,
+    editable: false,
+    headerClassName: "super-app-theme--header",
+    sortable: false,
+  },
+  {
+    field: "emp_mobile_no",
+    headerName: "EMPLOYEE MOB",
+    width: 170,
+    editable: false,
+    headerClassName: "super-app-theme--header",
+    sortable: false,
+  },
+  {
+    field: "emp_state",
+    headerName: "EMPLOYEE STATE",
+    width: 180,
+    headerClassName: "super-app-theme--header",
+    editable: false,
+    sortable: false,
+  },
+  {
+    field: "emp_mail_id",
+    headerName: "EMPLOYEE MAILID",
+    width: 190,
+    headerClassName: "super-app-theme--header",
+    editable: false,
+    sortable: false,
+  },
+];
+//
 
 const formikInputs = [
   {
@@ -64,66 +144,48 @@ const formikInputs = [
 ];
 
 export default function Employee() {
-  const { loading, error, data } = useQuery(ALL_EMPLOYEE);
-  const [addEmployee, { data: Data, loading: Loading, error: Error }] =
-    useMutation(Add_Employee);
+  const { loading, error, data: Data } = useQuery(ALL_EMPLOYEE);
+  console.log(Data);
   // console.log(data);
-  const formik = useFormik({
-    initialValues: {
-      emp_id: "",
-      emp_name: "",
-      emp_dob: "",
-      emp_doj: "",
-      emp_city: "",
-      emp_pincode: "",
-      emp_mobile_no: "",
-      emp_state: "",
-      emp_mail_id: "",
-    },
-    onSubmit: (values) => {
-      console.log(values);
-      addEmployee({
-        variables: values,
-        refetchQueries: [{ query: ALL_EMPLOYEE }],
-      });
-    },
-  });
+
+  const rows = React.useMemo(
+    () =>
+      Data &&
+      Data.employee.map((data) => ({
+        id: data.emp_id,
+        emp_name: data.emp_name,
+        emp_dob: data.emp_dob,
+        emp_doj: data.emp_doj,
+        emp_city: data.emp_city,
+        emp_pincode: data.emp_pincode,
+        emp_mobile_no: data.emp_mobile_no,
+        emp_state: data.emp_state,
+        emp_mail_id: data.emp_mail_id,
+      })),
+    [Data]
+  );
+  const initialValues = {
+    emp_id: "",
+    emp_name: "",
+    emp_dob: "",
+    emp_doj: "",
+    emp_city: "",
+    emp_pincode: "",
+    emp_mobile_no: "",
+    emp_state: "",
+    emp_mail_id: "",
+  };
 
   return (
-    <div className="ml-16">
-      <div className="lg:ml-4 max-w-3xl">
-        <h1 className="text-2xl text-gray-500">Employee Details</h1>
-        <div className="mt-10">
-          <Card className="" variant="outlined">
-            <CardContent>
-              <form onSubmit={formik.handleSubmit}>
-                <div className=" grid  sm:grid-cols-2 gap-14">
-                  {formikInputs.map((val, index) => (
-                    <div key={index}>
-                      <Label label={val.lable} />
-                      <input
-                        className=" text-base appearance-none bg-transparent border-b w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                        type={val.type}
-                        id={val.value}
-                        name={val.value}
-                        onChange={formik.handleChange}
-                        value={`${formik.values[val.value]}`}
-                        placeholder={val.lable}
-                      />
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-10">
-                  <Button variant="contained" type="submit" color="primary">
-                    Submit
-                  </Button>
-                </div>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
+    <div className="">
+      <Form
+        initialValues={initialValues}
+        Query={Add_Employee}
+        PQuery={ALL_EMPLOYEE}
+      />
+      <div className=" mt-10 mr-10 mb-16">
+        {Data && <DataTable rows={rows} columns={columns} />}
       </div>
-      <div className="p-5 mb-16">{data && <Table Data={data.employee} />}</div>
     </div>
   );
 }

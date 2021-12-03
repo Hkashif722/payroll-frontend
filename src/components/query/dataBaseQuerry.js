@@ -19,6 +19,32 @@ const ALL_EMPLOYEE = gql`
   }
 `;
 
+const DEPARTMENT = gql`
+  {
+    department {
+      dept_id
+      dept_name
+    }
+  }
+`;
+
+const ADD_DEPARTMENT = gql`
+  mutation AddDepartment($dept_id: Int, $dept_name: String) {
+    addDepartment(dept_id: $dept_id, dept_name: $dept_name) {
+      dept_id
+      dept_name
+    }
+  }
+`;
+
+const DELETE_DEPARTMENT = gql`
+  mutation DeleteDepartment($dept_id: Int) {
+    deleteDepartment(dept_id: $dept_id) {
+      dept_id
+    }
+  }
+`;
+
 const Add_Employee = gql`
   mutation AddEmployee(
     $emp_id: Int
@@ -55,4 +81,10 @@ const Add_Employee = gql`
   }
 `;
 
-export { ALL_EMPLOYEE, Add_Employee };
+export {
+  ALL_EMPLOYEE,
+  Add_Employee,
+  DEPARTMENT,
+  ADD_DEPARTMENT,
+  DELETE_DEPARTMENT,
+};

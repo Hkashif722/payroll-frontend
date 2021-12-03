@@ -6,6 +6,7 @@ import Login from "./components/componentList/Login";
 import SignUpLoginIn from "./components/SignUpLoginIn";
 import Home from "./components/componentList/Home";
 import Company from "./components/componentList/Company";
+import Department from "./components/componentList/Department";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/company" element={<Company />} />
                 <Route path="/employee" element={<Employee />} />
                 <Route path="/pay" element={<Payment />} />
+                <Route path="/department" element={<Department />} />
               </Routes>
             </div>
           </main>

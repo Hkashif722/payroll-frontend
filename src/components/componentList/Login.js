@@ -62,7 +62,12 @@ export default function Login() {
             </CardContent>
             <CardActions className="relative -bottom-5">
               <Button variant="contained" type="submit" color="primary">
-                <SnackBar button="LOGIN" alert={alertStatus} />
+                <SnackBar
+                  button="LOGIN"
+                  msg={"Successful"}
+                  fmsg={"Check password or username"}
+                  alert={alertStatus}
+                />
               </Button>
             </CardActions>
           </form>

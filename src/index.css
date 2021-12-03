@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .cusbtn {
+    @apply transition ease-out transform  hover:scale-105 text-white bg-blue-500 hover:bg-blue-600 px-3 py-2 border-4 rounded-3xl;
+  }
+}

@@ -31,10 +31,10 @@ export default function SnackBar(props) {
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         {props.alert ? (
           <Alert onClose={handleClose} severity="success">
-            Login Successful!
+            {props.msg}
           </Alert>
         ) : (
-          <Alert severity="error">Error!</Alert>
+          <Alert severity="error">{props.fmsg}</Alert>
         )}
       </Snackbar>
     </div>
