@@ -8,6 +8,7 @@ import Company from "./components/componentList/Company";
 import Department from "./components/componentList/Department";
 import Grade from "./components/componentList/Grade";
 import EmployeeGrade from "./components/componentList/EmployeeGrade";
+import EmpSalary from "./components/componentList/EmpSalary";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
             <div className="pr-10">
               <Routes>
                 <Route path="/home" element={<Home />} />
-                <Route path="/company" element={<Company />} />
+                <Route path="/emp-salary" element={<EmpSalary />} />
                 <Route path="/employee" element={<Employee />} />
                 <Route path="/emp-grade" element={<EmployeeGrade />} />
                 <Route path="/department" element={<Department />} />

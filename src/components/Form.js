@@ -14,6 +14,20 @@ function Label({ label }) {
   );
 }
 
+const validate = (values) => {
+  let errors = {};
+  if (
+    !/^[a-zA-Z]*$/g.test(
+      values.emp_name ||
+        values.emp_city ||
+        values.emp_state ||
+        values.grade_name
+    )
+  ) {
+    alert("Invalid characters");
+  }
+};
+
 export default function Form({
   initialValues,
   formikInputs,
@@ -28,6 +42,7 @@ export default function Form({
   const [flag, setFlag] = useState();
   const formik = useFormik({
     initialValues,
+    validate,
     onSubmit: (values) => {
       console.log(values);
       if (values.emp_id !== "") {

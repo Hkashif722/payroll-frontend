@@ -82,12 +82,12 @@ const formikInputs = [
   },
   {
     value: "emp_from_date",
-    type: "text",
+    type: "date",
     lable: "FROM DATE",
   },
   {
     value: "emp_to_date",
-    type: "text",
+    type: "date",
     lable: "TO DATE:",
   },
 ];

@@ -29,15 +29,9 @@ const titles = [
   },
   {
     id: "5",
-    title: "Prepare Monthly Salary",
+    title: "Employee Grade Report",
     img: "https://cdn-payscale.com/content/how-it-works-negotiate-icon@2x.png",
-    route: "/Salary",
-  },
-  {
-    id: "6",
-    title: "Grade Report",
-    img: "https://cdn-payscale.com/content/how-it-works-job-details-icon@2x.png",
-    route: "/gradeReport",
+    route: "/emp-salary",
   },
 ];
 

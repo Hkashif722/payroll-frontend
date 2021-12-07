@@ -106,16 +106,17 @@ const formikInputs = [
   {
     value: "emp_name",
     type: "text",
+    pattern: "/[^A-Za-z]/ig, ''",
     lable: "EMP NAME:",
   },
   {
     value: "emp_dob",
-    type: "text",
+    type: "date",
     lable: "EMP DOB:",
   },
   {
     value: "emp_doj",
-    type: "text",
+    type: "date",
     lable: "EMP DOJ:",
   },
   {

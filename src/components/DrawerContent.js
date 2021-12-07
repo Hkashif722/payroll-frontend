@@ -10,16 +10,16 @@ const pageRoute = [
     route: "/home",
   },
   {
-    title: "Company",
-    route: "/company",
-  },
-  {
-    title: "Payment",
+    title: "Employee Grade ",
     route: "/emp-grade",
   },
   {
     title: "Employee",
     route: "/employee",
+  },
+  {
+    title: "Employee Salary",
+    route: "/emp-salary",
   },
 ];
 

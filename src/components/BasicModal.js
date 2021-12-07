@@ -4,6 +4,16 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
+function validate(values) {
+  console.log(values);
+  let error = {};
+  if (!/^[a-zA-Z]*$/g.test(values)) {
+    alert("Invalid characters");
+    error = "Must be 15 characters or less";
+  }
+  return error;
+}
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -57,6 +67,7 @@ export default function BasicModal({
                   onChange={(e) => setDeptName(e.target.value)}
                   className="ml-3 border-b-2 outline-none border-gray-400"
                   placeholder="Enter Department"
+                  onChange={(e) => validate(e.target.value)}
                   type="text"
                 />
               </>
